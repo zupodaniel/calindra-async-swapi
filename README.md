@@ -210,3 +210,13 @@ https://api.calindra-async-swapi.com/films/?enrichFields=characters,planets,spec
 }
 
 ```
+
+# Regras
+
+* É esperado que sejam produzidos Pull Requests para esse repositório, contendo o código do desafio
+* O desafio pode ser realizado em duplas
+* É possível utilizar callbacks, promises ou async/await ou cada modelo que conseguir executar.
+
+# Extras
+
+* Vou indicando aqui as novas capacidades conforme a evolução do grupo
