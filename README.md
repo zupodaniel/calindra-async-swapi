@@ -23,7 +23,7 @@ O desafio iniciará com o objetivo de:
 ## chamada API
 
 ```json
-https://api.calindra-async-swapi.com/films/?enrichFields=characters,planets,species,starships
+https://api.calindra-async-swapi.com/films/4?enrichFields=planets
 ```
 
 ## retorno esperado
