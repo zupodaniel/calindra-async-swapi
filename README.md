@@ -220,3 +220,16 @@ https://api.calindra-async-swapi.com/films/4?enrichFields=planets
 # Extras
 
 * Vou indicando aqui as novas capacidades conforme a evolução do grupo
+
+# Tarefas
+
+* Baixar Node.JS
+* Criação do projeto:
+* * Clonar o repositório https://github.com/zupodaniel/calindra-async-swapi/edit/master
+* * Criar o package.json que define o projeto
+* * Adicionar o express com o comando: _npm install express --save_
+* * Criar a estrutura seguindo o tutorial em: _https://expressjs.com/en/starter/installing.html_
+* Criação da action que receberá os dados de film e enrichFields
+* * Utilizar o tutorial em _https://expressjs.com/en/starter/hello-world.html_ 
+* * Utilizar em seguida o conteúdo do link _https://expressjs.com/en/starter/basic-routing.html_
+...
