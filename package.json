@@ -1,0 +1,32 @@
+{
+  "name": "calindra-async-swapi",
+  "version": "1.0.0",
+  "description": "Como parte das aulas de programação com IO ASYNC, construiremos uma API REST para exploração das técnicas e evoluiremos a dificuldade conforme o desempenho da turma.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ytallobruno/calindra-async-swapi.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "js",
+    "nodemon",
+    "api"
+  ],
+  "author": "Ytallo Bruno",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ytallobruno/calindra-async-swapi/issues"
+  },
+  "homepage": "https://github.com/ytallobruno/calindra-async-swapi#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
