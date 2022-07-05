@@ -27,6 +27,7 @@ app.get("/:entity/:id", (req, res) => {
   const enrichFields = req.query.enrichFields;
 
   const splitEnrichFields = enrichFields.split(",");
+ 
 
   const url = `https://swapi.dev/api/${entity}/${id}`;
 
@@ -35,9 +36,8 @@ app.get("/:entity/:id", (req, res) => {
     .get(url)
     .then(function (response) {
       const responseData = response.data;
-      if (splitEnrichFields[0] == "planets") {
-        console.log(responseData.planets);
-        let responseApi = responseData.planets.map((field) => {
+      if (splitEnrichFields) {
+        responseData[splitEnrichFields].map((field) => {
           axios
             .get(field)
             .then(function (response) {
@@ -48,7 +48,7 @@ app.get("/:entity/:id", (req, res) => {
             });
         });
       } else {
-        console.log("erro");
+        console.log("não conseguimos encontrar, tente novamente com um campo válido");
       }
     })
     .catch(function (error) {
