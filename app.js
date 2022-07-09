@@ -7,47 +7,54 @@ const port = process.env.PORT || 3002;
 const url = "https://swapi.dev/api/"
 
 
-app.get('/:entyds/:id', async (req, res) => {
+app.get('/:entity/:id', async (req, res) => {
     console.time('run>>')
-    const { entyds, id } = req.params;
+    const { entity, id } = req.params;
     
-    const urlResquest = `${url}/${entyds}/${id}`;
+    const urlResquest = `${url}/${entity}/${id}`;
     const enrichFieldsParams = req.query.enrichFields;
 
-    const filmResponse = await axios.get(urlResquest);
-    const film = filmResponse.data;
+    const entityResponse = await axios.get(urlResquest);
+    const searchEntity = entityResponse.data;
     
     if (enrichFieldsParams !== undefined) {
         
         const enrichFields = enrichFieldsParams.split(",")
         
-        if (filmResponse.status === 200) {
+        if (entityResponse.status === 200) {
             for (let field of enrichFields) {
                 
-                const currentField = film[field];
+                const currentField = searchEntity[field];
                 
-                const fullFields = [];
+                const fullPromiseArray = [];
+                const fullField = [];
                 
                 for (const url of currentField) {
                     
-                    const responseField = await axios.get(url);
-                    
-                    if (responseField.status === 200) {
-                        const fullField = responseField.data;
-                        fullFields.push(fullField);
-                    }
+                    const promise = axios.get(url);
+                    fullPromiseArray.push(promise);
+
                 }
+                const promiseAll = await Promise.all(fullPromiseArray); 
+
+
+                const filterPromise = promiseAll.filter(object => {
+                    if(object['status'] == 200) {
+
+                        fullField.push(object['data']);
+                    }
+                })
                 
-                film[field] = fullFields;
+                searchEntity[field] = fullField;
                 
             }
-            res.json(film)
+            res.json(searchEntity)
             
         } else {
             res.status(404).send({ error: 'Filme não encontrado.' })
         }
     } else {
-        res.json(film)
+        res.json(searchEntity)
     }
     
 })
